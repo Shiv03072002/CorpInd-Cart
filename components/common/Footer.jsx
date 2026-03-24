@@ -20,12 +20,18 @@ export default function Footer() {
   return (
     <>
       {/* Footer */}
-      <footer className="bg-[#0a1f1f] px-6 md:px-16 lg:px-24 pt-16 pb-8 font-sans">
+      <footer className="bg-[#053a49] px-6 md:px-16 lg:px-24 pt-16 pb-8 font-sans">
         <div className="max-w-7xl mx-auto py-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
             {/* Brand */}
             <div>
-              <h3 className="text-white font-black text-2xl mb-4">CorpInd Cart</h3>
+              <div className="flex items-center mb-4">
+  <img
+    src="https://corpindcart.com/wp-content/uploads/2021/09/cropped-Logos1.png"
+    alt="CorpInd Cart"
+    className="h-8 md:h-10 w-auto"
+  />
+</div>
               <p className="text-[#94A3B8] text-base leading-relaxed mb-6">
                 Premium legal and compliance solutions for modern businesses in India.
                 Your sovereign counsel for all corporate matters.
@@ -78,14 +84,14 @@ export default function Footer() {
               </p>
               <p className="text-base mb-2">
                 <span className="text-[#c49a20] font-semibold">Email: </span>
-                <a href="mailto:contact@corpindcart.com" className="text-[#94A3B8] hover:text-white transition-colors">
-                  contact@corpindcart.com
+                <a href="mailto:corpindcart@gmail.com" className="text-[#94A3B8] hover:text-white transition-colors">
+                  corpindcart@gmail.com
                 </a>
               </p>
               <p className="text-base">
                 <span className="text-[#c49a20] font-semibold">Phone: </span>
-                <a href="tel:+919999XXXXXX" className="text-[#94A3B8] hover:text-white transition-colors">
-                  +91 9999-XXX-XXX
+                <a href="tel:+91 8595840841" className="text-[#94A3B8] hover:text-white transition-colors">
+                  +91 8595840841
                 </a>
               </p>
             </div>

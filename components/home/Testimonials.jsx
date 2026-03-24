@@ -95,7 +95,7 @@ export default function TestimonialsAndCTA() {
                 Get a Free Quote
               </button>
               <p className="text-xs text-[#7aafaf] tracking-wide uppercase text-center">
-                OR CALL +91 (011) 4500-XXXX
+                OR CALL  +91 8595840841
               </p>
             </div>
           </div>
