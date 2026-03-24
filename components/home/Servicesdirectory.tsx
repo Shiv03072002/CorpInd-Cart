@@ -189,7 +189,7 @@ const servicesByCategory = {
 
 export default function ServicesDirectory() {
   const [activeTab, setActiveTab] = useState("Company & LLP");
-  const services = servicesByCategory[activeTab] ?? [];
+  const services = servicesByCategory[activeTab] || [];
 
   return (
     <section className="bg-[#F2F6F7]">
@@ -227,7 +227,7 @@ export default function ServicesDirectory() {
           {services.map((service) => (
             <div
               key={service.title}
-              className="bg-white rounded-xl p-7 flex flex-col gap-3 transition-colors"
+              className="bg-white rounded-xl p-7 flex flex-col gap-3 transition-colors hover:shadow-md"
             >
               <div className="w-11 h-11 rounded-xl bg-[#00242E0D] flex items-center justify-center">
                 {service.icon}
