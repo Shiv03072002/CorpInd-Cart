@@ -1,0 +1,255 @@
+"use client";
+
+import { useState } from "react";
+import {
+  Building2,
+  FileSignature,
+  UserCircle,
+  Globe,
+  ShieldCheck,
+  Receipt,
+  BadgeCheck,
+  ScrollText,
+  Scale,
+  FilePen,
+  ClipboardList,
+  BookOpen,
+} from "lucide-react";
+
+const categories = [
+  "Company & LLP",
+  "IPR & Trademark",
+  "GST & Income Tax",
+  "Annual Compliance",
+  "Legal Drafting",
+];
+
+const servicesByCategory: Record<
+  string,
+  { icon: React.ReactNode; title: string; description: string }[]
+> = {
+  "Company & LLP": [
+    {
+      icon: <Building2 size={28} className="text-[#4a5a5a]" />,
+      title: "Pvt Ltd Registration",
+      description: "Fast-track incorporation for new startups.",
+    },
+    {
+      icon: <FileSignature size={28} className="text-[#4a5a5a]" />,
+      title: "LLP Incorporation",
+      description: "Legal structure for professional service firms.",
+    },
+    {
+      icon: <UserCircle size={28} className="text-[#4a5a5a]" />,
+      title: "One Person Company",
+      description: "Enjoy benefits of a company as a sole owner.",
+    },
+    {
+      icon: <Globe size={28} className="text-[#4a5a5a]" />,
+      title: "Section 8 (NGO)",
+      description: "Registration for non-profit organizations.",
+    },
+    {
+      icon: <ShieldCheck size={28} className="text-[#4a5a5a]" />,
+      title: "Trademark Filing",
+      description: "Protect your brand name and logo identity.",
+    },
+    {
+      icon: <Receipt size={28} className="text-[#4a5a5a]" />,
+      title: "GST Registration",
+      description: "Simple GST setup for traders and services.",
+    },
+  ],
+  "IPR & Trademark": [
+    {
+      icon: <ShieldCheck size={28} className="text-[#4a5a5a]" />,
+      title: "Trademark Registration",
+      description: "Register your brand identity with full legal protection.",
+    },
+    {
+      icon: <BookOpen size={28} className="text-[#4a5a5a]" />,
+      title: "Copyright Filing",
+      description: "Secure your creative works under Indian copyright law.",
+    },
+    {
+      icon: <BadgeCheck size={28} className="text-[#4a5a5a]" />,
+      title: "Patent Application",
+      description: "File provisional or complete patents for inventions.",
+    },
+    {
+      icon: <FilePen size={28} className="text-[#4a5a5a]" />,
+      title: "Trademark Objection",
+      description: "Expert response to trademark examination reports.",
+    },
+    {
+      icon: <Scale size={28} className="text-[#4a5a5a]" />,
+      title: "IP Litigation Support",
+      description: "Legal support for IP disputes and infringement cases.",
+    },
+    {
+      icon: <ScrollText size={28} className="text-[#4a5a5a]" />,
+      title: "Design Registration",
+      description: "Protect the visual design of your products.",
+    },
+  ],
+  "GST & Income Tax": [
+    {
+      icon: <Receipt size={28} className="text-[#4a5a5a]" />,
+      title: "GST Registration",
+      description: "Hassle-free GST setup for all business types.",
+    },
+    {
+      icon: <ClipboardList size={28} className="text-[#4a5a5a]" />,
+      title: "GST Return Filing",
+      description: "Monthly, quarterly, and annual GST return filing.",
+    },
+    {
+      icon: <FilePen size={28} className="text-[#4a5a5a]" />,
+      title: "Income Tax Filing",
+      description: "ITR filing for individuals, firms, and companies.",
+    },
+    {
+      icon: <BadgeCheck size={28} className="text-[#4a5a5a]" />,
+      title: "Tax Planning",
+      description: "Strategic tax planning to minimize liability legally.",
+    },
+    {
+      icon: <Scale size={28} className="text-[#4a5a5a]" />,
+      title: "GST Notices & Appeals",
+      description: "Expert handling of GST notices and litigation.",
+    },
+    {
+      icon: <BookOpen size={28} className="text-[#4a5a5a]" />,
+      title: "TDS Compliance",
+      description: "TDS deduction, filing, and compliance management.",
+    },
+  ],
+  "Annual Compliance": [
+    {
+      icon: <ClipboardList size={28} className="text-[#4a5a5a]" />,
+      title: "ROC Annual Filing",
+      description: "File annual returns with the Registrar of Companies.",
+    },
+    {
+      icon: <BadgeCheck size={28} className="text-[#4a5a5a]" />,
+      title: "Board Meetings",
+      description: "Minutes, resolutions, and board meeting compliance.",
+    },
+    {
+      icon: <ScrollText size={28} className="text-[#4a5a5a]" />,
+      title: "Director KYC",
+      description: "Annual Director KYC filing with MCA portal.",
+    },
+    {
+      icon: <Building2 size={28} className="text-[#4a5a5a]" />,
+      title: "LLP Annual Return",
+      description: "Form 11 & Form 8 filing for LLP entities.",
+    },
+    {
+      icon: <FilePen size={28} className="text-[#4a5a5a]" />,
+      title: "Statutory Audit",
+      description: "Audit support for companies under Companies Act.",
+    },
+    {
+      icon: <Globe size={28} className="text-[#4a5a5a]" />,
+      title: "FEMA Compliance",
+      description: "Reporting and compliance for foreign transactions.",
+    },
+  ],
+  "Legal Drafting": [
+    {
+      icon: <FilePen size={28} className="text-[#4a5a5a]" />,
+      title: "Founders Agreement",
+      description: "Define roles, equity, and responsibilities clearly.",
+    },
+    {
+      icon: <FileSignature size={28} className="text-[#4a5a5a]" />,
+      title: "NDA Drafting",
+      description: "Non-disclosure agreements for business partnerships.",
+    },
+    {
+      icon: <ScrollText size={28} className="text-[#4a5a5a]" />,
+      title: "Employment Contracts",
+      description: "Legally sound offer letters and employment terms.",
+    },
+    {
+      icon: <Scale size={28} className="text-[#4a5a5a]" />,
+      title: "Legal Notices",
+      description: "Draft and send legal notices for disputes.",
+    },
+    {
+      icon: <BookOpen size={28} className="text-[#4a5a5a]" />,
+      title: "Shareholder Agreement",
+      description: "Protect investor and promoter rights effectively.",
+    },
+    {
+      icon: <BadgeCheck size={28} className="text-[#4a5a5a]" />,
+      title: "MOU Drafting",
+      description: "Memorandum of Understanding for business tie-ups.",
+    },
+  ],
+};
+
+export default function ServicesDirectory() {
+  const [activeTab, setActiveTab] = useState("Company & LLP");
+  const services = servicesByCategory[activeTab] ?? [];
+
+  return (
+    <section className="bg-[#F5F4F0] px-6 md:px-16 lg:px-24 py-20 font-sans">
+      {/* Heading */}
+      <div className="text-center mb-10">
+        <h2
+          className="text-3xl md:text-4xl font-black text-[#0d2b2b] mb-4"
+          style={{ fontFamily: "'Georgia', serif" }}
+        >
+          Our Services Directory
+        </h2>
+        <p className="text-[#6b7a7a] text-base max-w-xl mx-auto leading-relaxed">
+          Browse our comprehensive list of specialized business and legal
+          solutions designed for Indian entrepreneurs.
+        </p>
+      </div>
+
+      {/* Tabs */}
+      <div className="flex flex-wrap justify-center gap-3 mb-10">
+        {categories.map((cat) => (
+          <button
+            key={cat}
+            onClick={() => setActiveTab(cat)}
+            className={`px-5 py-2.5 rounded-full text-sm font-semibold transition-all border ${
+              activeTab === cat
+                ? "bg-[#0d2b2b] text-white border-[#0d2b2b] shadow"
+                : "bg-white text-[#0d2b2b] border-[#ddd8ce] hover:border-[#0d2b2b]"
+            }`}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+
+      {/* Cards Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {services.map((service) => (
+          <div
+            key={service.title}
+            className="bg-white rounded-2xl p-7 flex flex-col gap-3 border border-[#e8e2da] hover:shadow-md transition-shadow group"
+          >
+            <div className="w-11 h-11 rounded-xl bg-[#f0ede6] flex items-center justify-center">
+              {service.icon}
+            </div>
+            <h3 className="text-lg font-bold text-[#0d2b2b] mt-1">
+              {service.title}
+            </h3>
+            <p className="text-[#6b7a7a] text-sm leading-relaxed flex-1">
+              {service.description}
+            </p>
+            <button className="flex items-center gap-1 text-[#c49a20] font-semibold text-sm mt-2 hover:gap-2 transition-all w-fit">
+              Get Started
+              <span className="text-base leading-none">&rsaquo;</span>
+            </button>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
