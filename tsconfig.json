@@ -29,6 +29,6 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts"
-, "components/home/Servicesdirectory.jsx", "components/home/Latestarticles.jsx"  ],
+, "components/home/Servicesdirectory.jsx", "components/home/Latestarticles.jsx", "components/home/Whychooseus.jsx"  ],
   "exclude": ["node_modules"]
 }
