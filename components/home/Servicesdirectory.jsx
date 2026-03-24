@@ -193,7 +193,7 @@ export default function ServicesDirectory() {
 
   return (
     <section className="bg-[#F2F6F7]">
-      <div className="max-w-7xl mx-auto px-6 md:px-10 py-20">
+      <div className="max-w-7xl mx-auto px-6 md:px-4 py-20">
         {/* Heading */}
         <div className="text-center mb-10">
           <h2 className="text-3xl md:text-4xl font-black text-[#0d2b2b] mb-4">
