@@ -18,7 +18,7 @@ export default function Header() {
 
   return (
     <header className="w-full bg-[#053a49] text-white border-b border-gray-200 sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 md:px-6 py-4 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 md:px-2 py-4 flex items-center justify-between">
         
         {/* Logo */}
         <div className="flex items-center">
@@ -38,7 +38,7 @@ export default function Header() {
               className={
                 link.active
                   ? "text-[#f0c840] border-b-2 border-[#f0c840] pb-1"
-                  : "hover:text-[#0B3B3C] transition-colors"
+                  : "hover:text-[#fffff] transition-colors"
               }
             >
               {link.label}

@@ -1,6 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
   Building2,
   FileSignature,
@@ -15,6 +17,9 @@ import {
   ClipboardList,
   BookOpen,
 } from "lucide-react";
+
+// Register GSAP plugins
+gsap.registerPlugin(ScrollTrigger);
 
 const categories = [
   "Company & LLP",
@@ -190,31 +195,203 @@ const servicesByCategory = {
 export default function ServicesDirectory() {
   const [activeTab, setActiveTab] = useState("Company & LLP");
   const services = servicesByCategory[activeTab] || [];
+  
+  const sectionRef = useRef(null);
+  const headingRef = useRef(null);
+  const subheadingRef = useRef(null);
+  const tabsRef = useRef(null);
+  const cardsContainerRef = useRef(null);
+  const cardsRef = useRef([]);
+
+  useEffect(() => {
+    // Main section entrance
+    if (sectionRef.current) {
+      gsap.fromTo(
+        sectionRef.current,
+        {
+          opacity: 0,
+          y: 50,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 80%",
+            end: "bottom 20%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+    }
+
+    // Heading animation
+    if (headingRef.current) {
+      gsap.fromTo(
+        headingRef.current,
+        {
+          opacity: 0,
+          y: -30,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          ease: "back.out(0.7)",
+          scrollTrigger: {
+            trigger: headingRef.current,
+            start: "top 85%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+    }
+
+    // Subheading animation
+    if (subheadingRef.current) {
+      gsap.fromTo(
+        subheadingRef.current,
+        {
+          opacity: 0,
+          y: 20,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          delay: 0.2,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: subheadingRef.current,
+            start: "top 85%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+    }
+
+    // Tabs container animation
+    if (tabsRef.current) {
+      gsap.fromTo(
+        tabsRef.current,
+        {
+          opacity: 0,
+          scale: 0.95,
+        },
+        {
+          opacity: 1,
+          scale: 1,
+          duration: 0.5,
+          delay: 0.3,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: tabsRef.current,
+            start: "top 85%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+    }
+
+    // Cleanup ScrollTriggers
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
+  }, []);
+
+  // Animate cards when tab changes or when new cards appear
+  useEffect(() => {
+    // Small delay to ensure DOM is updated
+    const timer = setTimeout(() => {
+      cardsRef.current.forEach((card, index) => {
+        if (card) {
+          gsap.fromTo(
+            card,
+            {
+              opacity: 0,
+              y: 40,
+              scale: 0.95,
+            },
+            {
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              duration: 0.5,
+              delay: index * 0.05,
+              ease: "back.out(0.6)",
+              scrollTrigger: {
+                trigger: card,
+                start: "top 90%",
+                toggleActions: "play none none reverse",
+              },
+            }
+          );
+        }
+      });
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, [activeTab, services]);
+
+  // Add hover animations to cards
+  useEffect(() => {
+    const cards = cardsRef.current.filter(card => card);
+    
+    cards.forEach((card) => {
+      const hoverIn = () => {
+        gsap.to(card, {
+          y: -8,
+          boxShadow: "0 12px 24px rgba(0,0,0,0.1)",
+          duration: 0.3,
+          ease: "power2.out",
+        });
+      };
+      
+      const hoverOut = () => {
+        gsap.to(card, {
+          y: 0,
+          boxShadow: "0 0px 0px rgba(0,0,0,0)",
+          duration: 0.3,
+          ease: "power2.out",
+        });
+      };
+      
+      card.addEventListener("mouseenter", hoverIn);
+      card.addEventListener("mouseleave", hoverOut);
+      
+      return () => {
+        card.removeEventListener("mouseenter", hoverIn);
+        card.removeEventListener("mouseleave", hoverOut);
+      };
+    });
+  }, [activeTab, services]);
 
   return (
-    <section className="bg-[#F2F6F7]">
+    <section ref={sectionRef} className="bg-[#F2F6F7]">
       <div className="max-w-7xl mx-auto px-6 md:px-4 py-20">
         {/* Heading */}
         <div className="text-center mb-10">
-          <h2 className="text-3xl md:text-4xl font-black text-[#0d2b2b] mb-4">
+          <h2 ref={headingRef} className="text-3xl md:text-4xl font-black text-[#0d2b2b] mb-4">
             Our Services Directory
           </h2>
-          <p className="text-[#6b7a7a] text-base max-w-3xl mx-auto leading-relaxed">
+          <p ref={subheadingRef} className="text-[#6b7a7a] text-base max-w-3xl mx-auto leading-relaxed">
             Browse our comprehensive list of specialized business and legal
             solutions designed for Indian entrepreneurs.
           </p>
         </div>
 
         {/* Tabs */}
-        <div className="flex flex-wrap justify-center gap-3 mb-10">
+        <div ref={tabsRef} className="flex flex-wrap justify-center gap-3 mb-10">
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setActiveTab(cat)}
-              className={`px-5 py-2.5 rounded-xl text-sm font-semibold transition-all ${
+              className={`px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 ${
                 activeTab === cat
-                  ? "bg-[#0d2b2b] text-white"
-                  : "bg-white text-[#0d2b2b] hover:bg-[#e8e2da]"
+                  ? "bg-[#0d2b2b] text-white scale-105"
+                  : "bg-white text-[#0d2b2b] hover:bg-[#e8e2da] hover:scale-105"
               }`}
             >
               {cat}
@@ -223,11 +400,12 @@ export default function ServicesDirectory() {
         </div>
 
         {/* Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {services.map((service) => (
+        <div ref={cardsContainerRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {services.map((service, index) => (
             <div
               key={service.title}
-              className="bg-white rounded-xl p-7 flex flex-col gap-3 transition-colors hover:shadow-md"
+              ref={(el) => (cardsRef.current[index] = el)}
+              className="bg-white rounded-xl p-7 flex flex-col gap-3 transition-colors cursor-pointer"
             >
               <div className="w-11 h-11 rounded-xl bg-[#00242E0D] flex items-center justify-center">
                 {service.icon}
@@ -238,9 +416,11 @@ export default function ServicesDirectory() {
               <p className="text-[#6b7a7a] text-sm leading-relaxed flex-1">
                 {service.description}
               </p>
-              <button className="flex items-center gap-1 text-[#835500] font-semibold text-sm mt-2 hover:gap-2 transition-all w-fit">
+              <button className="flex items-center gap-1 text-[#835500] font-semibold text-sm mt-2 hover:gap-2 transition-all w-fit group">
                 Get Started
-                <span className="text-base leading-none">&rsaquo;</span>
+                <span className="text-base leading-none transition-transform group-hover:translate-x-1 inline-block">
+                  &rsaquo;
+                </span>
               </button>
             </div>
           ))}
