@@ -1,93 +1,95 @@
 "use client";
 
-import { CheckCircle2, Users, Clock } from "lucide-react";
+import { CheckCircle } from "lucide-react";
 
 const features = [
   {
-    icon: <CheckCircle2 size={22} className="text-[#c49a20] mt-0.5 shrink-0" />,
     title: "Fixed Upfront Pricing",
     description:
       "No hidden charges or unexpected legal fees. Transparency at every step.",
   },
   {
-    icon: <CheckCircle2 size={22} className="text-[#c49a20] mt-0.5 shrink-0" />,
     title: "Expert Guidance",
     description:
       "Talk directly to experienced CAs, CSs, and Corporate Lawyers.",
   },
   {
-    icon: <CheckCircle2 size={22} className="text-[#c49a20] mt-0.5 shrink-0" />,
     title: "Timely Deliverables",
     description: "We understand the value of time in business operations.",
   },
 ];
 
-const stats = [
-  { value: "98%", label: "Client Retention" },
-  { value: "A+", label: "Service Rating" },
-];
-
 export default function WhyChooseUs() {
   return (
-    <section className="bg-[#F5F4F0] px-6 md:px-16 lg:px-24 py-20 font-sans">
-      <div className="flex flex-col lg:flex-row items-center gap-16">
+    <section className="bg-[#F2F6F7] px-6 md:px-16 lg:px-24 py-12 md:py-20">
+      <div className="max-w-7xl mx-auto">
+        <div className="flex flex-col lg:flex-row items-start gap-12 lg:gap-20">
+          {/* ── Left: Image + floating card ── */}
+          <div className="relative w-full max-w-[460px] shrink-0 mx-auto lg:mx-0">
+            {/* Main photo */}
+            <div className="w-full h-[400px] md:h-[450px] lg:h-[500px] rounded-2xl md:rounded-3xl overflow-hidden bg-[#b8b0a0]">
+              <img
+                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&h=600&fit=crop"
+                alt="Team collaboration"
+                className="w-full h-full object-cover"
+              />
+            </div>
 
-        {/* Left — Image + floating card */}
-        <div className="relative w-full max-w-[480px] shrink-0 mx-auto lg:mx-0">
-          {/* Photo */}
-          <div className="w-full h-[480px] rounded-3xl overflow-hidden bg-[#c8bfa8] shadow-xl">
-            <div className="w-full h-full bg-gradient-to-br from-[#b0a488] to-[#7a6a50] flex items-center justify-center">
-              <div className="text-center text-white/50">
-                <Users size={56} />
-                <p className="text-sm mt-2">Professional Photo</p>
-              </div>
+            {/* Gold floating card — overlaps bottom-right of image */}
+            <div className="absolute bottom-[-20px] right-[-15px] md:bottom-[-32px] md:right-[-25px] rounded border-2 md:border-4 border-white text-white text-center shadow-2xl bg-[#F0A500] w-[140px] md:w-[180px] py-5 md:py-8 px-3 md:px-5">
+              <p className="text-3xl md:text-4xl font-black leading-none">10+</p>
+              <p className="text-[10px] md:text-xs font-bold tracking-widest uppercase mt-1 md:mt-2 leading-snug text-white/85">
+                Years of<br />Excellence
+              </p>
             </div>
           </div>
 
-          {/* Floating gold card */}
-          <div className="absolute bottom-0 right-0 translate-x-4 translate-y-4 bg-[#c49a20] text-white rounded-2xl w-44 py-8 px-5 text-center shadow-2xl">
-            <p className="text-4xl font-black leading-none">10+</p>
-            <p className="text-xs font-bold tracking-widest uppercase mt-2 opacity-90 leading-snug">
-              Years of Excellence
-            </p>
-          </div>
-        </div>
+          {/* ── Right: Content ── */}
+          <div className="flex-1 pt-0 lg:pt-2">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-black text-[#0d2b2b] leading-tight mb-6 md:mb-10">
+              We Make Legal &amp; Business<br />Work Easy for You
+            </h2>
 
-        {/* Right — Content */}
-        <div className="flex-1">
-          <h2
-            className="text-3xl md:text-4xl font-black text-[#0d2b2b] leading-tight mb-8"
-            style={{ fontFamily: "'Georgia', serif" }}
-          >
-            We Make Legal &amp; Business Work Easy for You
-          </h2>
-
-          {/* Feature list */}
-          <div className="flex flex-col gap-7 mb-10">
-            {features.map((f) => (
-              <div key={f.title} className="flex items-start gap-4">
-                {f.icon}
-                <div>
-                  <p className="font-bold text-[#0d2b2b] text-base mb-1">{f.title}</p>
-                  <p className="text-[#6b7a7a] text-sm leading-relaxed">{f.description}</p>
+            {/* Feature list */}
+            <div className="flex flex-col gap-6 md:gap-8 mb-8 md:mb-10">
+              {features.map((f) => (
+                <div key={f.title} className="flex items-start gap-3 md:gap-4">
+                  {/* Gold outlined circle check */}
+                  <CheckCircle
+                    size={20}
+                    className="shrink-0 mt-0.5 text-[#F0A500] md:w-6 md:h-6"
+                    strokeWidth={2}
+                  />
+                  <div>
+                    <p className="font-bold text-[#0d2b2b] text-sm md:text-base mb-1">
+                      {f.title}
+                    </p>
+                    <p className="text-[#5a6a6a] text-xs md:text-sm leading-relaxed">
+                      {f.description}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
 
-          {/* Stats */}
-          <div className="flex gap-4 flex-wrap">
-            {stats.map((s) => (
-              <div
-                key={s.label}
-                className="flex-1 min-w-[130px] bg-white border border-[#e8e2da] rounded-xl px-6 py-5"
-              >
-                <p className="text-3xl font-black text-[#0d2b2b]">{s.value}</p>
-                <p className="text-xs font-bold tracking-widest uppercase text-[#c49a20] mt-1">
-                  {s.label}
+            {/* Stat cards */}
+            <div className="flex gap-3 md:gap-4 flex-wrap justify-center lg:justify-start">
+              {/* 98% — teal left border */}
+              <div className="w-[150px] md:w-[180px] bg-[#0C3B481A] rounded-xl px-4 md:px-6 py-4 md:py-5 border-l-4 border-l-[#0d2b2b]">
+                <p className="text-[1.5rem] md:text-[1.8rem] font-black text-[#0d2b2b] leading-none">98%</p>
+                <p className="text-[0.6rem] md:text-[0.65rem] font-bold tracking-widest uppercase mt-2 text-[#41484B] leading-tight">
+                  Client Retention
                 </p>
               </div>
-            ))}
+
+              {/* A+ — gold left border */}
+              <div className="w-[150px] md:w-[180px] bg-[#F0A5001A] rounded-xl px-4 md:px-6 py-4 md:py-5 border-l-4 border-l-[#F0A500]">
+                <p className="text-[1.5rem] md:text-[1.8rem] font-black text-[#F0A500] leading-none">A+</p>
+                <p className="text-[0.6rem] md:text-[0.65rem] font-bold tracking-widest uppercase mt-2 text-[#41484B] leading-tight">
+                  Service Rating
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

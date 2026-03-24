@@ -19,11 +19,17 @@ const testimonials = [
     name: "Vikram Singh",
     role: "Director, SteelCore Ltd",
   },
+  {
+    quote:
+      "Exceptional service and timely delivery. Their team went above and beyond to ensure our company registration was completed smoothly.",
+    name: "Priya Mehta",
+    role: "Founder, EcoSolutions",
+  },
 ];
 
 export default function TestimonialsAndCTA() {
   return (
-    <div className="bg-[#F5F4F0]">
+    <div className="bg-[#F2F6F7]">
       {/* ── Testimonials ── */}
       <section className="px-6 md:px-16 lg:px-24 py-20">
         <div className="max-w-7xl mx-auto">
@@ -31,11 +37,11 @@ export default function TestimonialsAndCTA() {
             What Our Clients Say
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {testimonials.map((t) => (
               <div
                 key={t.name}
-                className="bg-white rounded-2xl p-8 border border-[#e8e2da] flex flex-col justify-between shadow-sm relative"
+                className="bg-white rounded-xl p-9 flex flex-col justify-between relative"
               >
                 {/* Quote icon */}
                 <div className="absolute top-6 right-6 text-[rgba(131,85,0,0.20)]">
@@ -85,7 +91,7 @@ export default function TestimonialsAndCTA() {
 
             {/* CTA */}
             <div className="relative z-10 flex flex-col items-center gap-3 flex-shrink-0">
-              <button className="bg-[#c49a20] hover:bg-[#d4aa30] text-white font-bold px-10 py-4 rounded-xl text-base tracking-wide transition-colors shadow-lg">
+              <button className="bg-[#c49a20] hover:bg-[#d4aa30] text-white font-bold px-10 py-4 rounded-xl text-base tracking-wide transition-colors">
                 Get a Free Quote
               </button>
               <p className="text-xs text-[#7aafaf] tracking-wide uppercase text-center">
