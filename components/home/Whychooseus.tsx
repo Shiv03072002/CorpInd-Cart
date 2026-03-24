@@ -29,7 +29,7 @@ export default function WhyChooseUs() {
             {/* Main photo */}
             <div className="w-full h-[400px] md:h-[450px] lg:h-[500px] rounded-2xl md:rounded-3xl overflow-hidden bg-[#b8b0a0]">
               <img
-                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&h=600&fit=crop"
+                src="https://plus.unsplash.com/premium_photo-1661663327020-32f583846094?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 alt="Team collaboration"
                 className="w-full h-full object-cover"
               />
