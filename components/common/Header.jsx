@@ -29,8 +29,8 @@ export default function Header() {
   return (
     <header className="w-full bg-[#053a49] text-white border-b border-gray-200 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 md:px-2 py-4 flex items-center justify-between">
-        {/* Logo */}
-        <div className="flex items-center">
+        {/* Logo - Fixed width container */}
+        <div className="flex items-center w-[120px] md:w-[150px]">
           <img
             src={isScrolled ? "/images/logo copy.png" : "/images/logo.png"}
             alt="CorpInd Cart"
@@ -38,8 +38,8 @@ export default function Header() {
           />
         </div>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-6 lg:gap-8 text-white font-medium">
+        {/* Desktop Navigation - Flex grow to maintain position */}
+        <nav className="hidden md:flex items-center gap-6 lg:gap-8 text-white font-medium flex-1 justify-center">
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -55,15 +55,15 @@ export default function Header() {
           ))}
         </nav>
 
-        {/* Desktop Right Section */}
-        <div className="hidden md:flex items-center gap-4 lg:gap-6">
+        {/* Desktop Right Section - Fixed width container */}
+        <div className="hidden md:flex items-center gap-4 lg:gap-6 w-[120px] md:w-[150px] justify-end">
           <Link
             href="/contact"
-            className="text-white font-medium hover:text-[#f0c840] transition-colors"
+            className="text-white font-medium hover:text-[#f0c840] transition-colors whitespace-nowrap"
           >
             Contact
           </Link>
-          <button className="bg-white text-[#053a49] px-4 py-2 rounded-sm font-medium hover:bg-[#f0c840] hover:text-[#053a49] transition">
+          <button className="bg-white text-[#053a49] px-4 py-2 rounded-sm font-medium hover:bg-[#f0c840] hover:text-[#053a49] transition whitespace-nowrap">
             Get Free Help
           </button>
         </div>
