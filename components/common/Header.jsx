@@ -1,11 +1,21 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+    };
+    
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navLinks = [
     { href: "/", label: "Home", active: true },
@@ -19,15 +29,14 @@ export default function Header() {
   return (
     <header className="w-full bg-[#053a49] text-white border-b border-gray-200 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 md:px-2 py-4 flex items-center justify-between">
-        
         {/* Logo */}
         <div className="flex items-center">
-  <img
-    src="https://corpindcart.com/wp-content/uploads/2021/09/cropped-Logos1.png"
-    alt="CorpInd Cart"
-    className="h-8 md:h-10 w-auto"
-  />
-</div>
+          <img
+            src={isScrolled ? "/images/logo copy.png" : "/images/logo.png"}
+            alt="CorpInd Cart"
+            className="h-8 md:h-10 w-auto"
+          />
+        </div>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-6 lg:gap-8 text-white font-medium">
@@ -38,7 +47,7 @@ export default function Header() {
               className={
                 link.active
                   ? "text-[#f0c840] border-b-2 border-[#f0c840] pb-1"
-                  : "hover:text-[#fffff] transition-colors"
+                  : "hover:text-[#f0c840] transition-colors"
               }
             >
               {link.label}
@@ -50,11 +59,11 @@ export default function Header() {
         <div className="hidden md:flex items-center gap-4 lg:gap-6">
           <Link
             href="/contact"
-            className="text-white font-medium ] transition-colors"
+            className="text-white font-medium hover:text-[#f0c840] transition-colors"
           >
             Contact
           </Link>
-          <button className="bg-white text-[#053a49] px-4 py-2 rounded-sm font-medium hover:bg-[#0B2F3A] transition">
+          <button className="bg-white text-[#053a49] px-4 py-2 rounded-sm font-medium hover:bg-[#f0c840] hover:text-[#053a49] transition">
             Get Free Help
           </button>
         </div>
@@ -62,7 +71,7 @@ export default function Header() {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition"
+          className="md:hidden p-2 rounded-lg hover:bg-white/10 transition"
           aria-label="Toggle menu"
         >
           {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -82,24 +91,24 @@ export default function Header() {
                 className={
                   link.active
                     ? "text-[#B8791B] font-medium py-2 border-l-4 border-[#B8791B] pl-3"
-                    : "text-gray-700 hover:text-[#0B3B3C] py-2 pl-3 transition-colors"
+                    : "text-gray-700 hover:text-[#B8791B] py-2 pl-3 transition-colors"
                 }
               >
                 {link.label}
               </Link>
             ))}
-            
+
             {/* Mobile Contact Link */}
             <Link
               href="/contact"
               onClick={() => setIsMenuOpen(false)}
-              className="text-gray-700 font-medium py-2 pl-3 hover:text-[#0B3B3C] transition-colors"
+              className="text-gray-700 font-medium py-2 pl-3 hover:text-[#B8791B] transition-colors"
             >
               Contact
             </Link>
-            
+
             {/* Mobile CTA Button */}
-            <button className="bg-[#0C3B48] text-white px-4 py-3 rounded-sm font-medium hover:bg-[#0B2F3A] transition mt-2 w-full">
+            <button className="bg-[#0C3B48] text-white px-4 py-3 rounded-sm font-medium hover:bg-[#f0c840] hover:text-[#053a49] transition mt-2 w-full">
               Get Free Help
             </button>
           </div>
