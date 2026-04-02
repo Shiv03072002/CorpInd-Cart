@@ -4,16 +4,17 @@ import TrustStats from "../../components/about/Truststats";
 import MissionVision from "../../components/about/Missionvision";
 import Abouts from "../../components/about/Abouts";
 import Hero from "../../components/about/Hero";
-
+import HowItWorks from '@/components/home/Howitworks'
 export default function About() {
   return (
-   <div>
+   <div className=" overflow-hidden">
     <Hero />
     <Abouts/>
     <MissionVision />
     <TrustStats />
     <Coreservices/>
      <WhyChooseUs />
+      <HowItWorks/>
      
    </div>
   );

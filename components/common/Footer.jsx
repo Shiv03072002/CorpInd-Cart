@@ -20,7 +20,7 @@ export default function Footer() {
   return (
     <>
       {/* Footer */}
-      <footer className="bg-[#053a49] px-6 md:px-16 lg:px-24 pt-16 pb-8 font-sans">
+      <footer className="bg-[#053a49] px-6 md:px-16 lg:px-24 pt-16 pb-8 font-sans z-99">
         <div className="max-w-7xl mx-auto py-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
             {/* Brand */}

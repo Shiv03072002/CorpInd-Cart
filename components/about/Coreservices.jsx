@@ -29,20 +29,20 @@ const services = [
 
 export default function CoreServices() {
   return (
-    <section className="w-full bg-[#f4f7f6] py-24 px-6 md:px-16 lg:px-24 relative overflow-hidden">
+    <section className="w-full bg-[#FFFFFF] py-24 px-6 md:px-16 lg:px-24 relative overflow-hidden">
       {/* Decorative circle */}
-      <div className="absolute -top-20 -left-20 w-72 h-72 rounded-full bg-[#dde8e4] opacity-60 pointer-events-none" />
+    
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header */}
         <div className="flex flex-col items-center text-center mb-14 gap-4">
-          <span className="bg-amber-100 text-amber-700 text-xs font-semibold tracking-widest uppercase px-4 py-2 rounded-full">
+          <span className="bg-[#8355001A] text-[#835500] text-xs font-semibold tracking-widest uppercase px-4 py-2 rounded-full">
             What We Do
           </span>
           <h2 className="text-4xl md:text-5xl font-extrabold text-[#1a2e44]">
             Our Core Services
           </h2>
-          <p className="text-gray-500 text-base max-w-xl">
+          <p className="text-[#41484B] text-base max-w-xl">
             Everything your business needs, handled by experts in one place.
           </p>
         </div>
@@ -52,10 +52,10 @@ export default function CoreServices() {
           {services.map(({ icon: Icon, title, description }) => (
             <div
               key={title}
-              className="bg-white rounded-2xl p-7 flex flex-col gap-6 shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100"
+              className="bg-[#F8F9FB] rounded-2xl p-7 flex flex-col gap-6 hover:shadow-md transition-shadow duration-300 "
             >
               {/* Icon */}
-              <div className="w-11 h-11 flex items-center justify-center rounded-lg bg-gray-100">
+              <div className="w-11 h-11 flex items-center justify-center rounded-lg bg-[#FFFFFF]">
                 <Icon className="w-5 h-5 text-[#1a2e44]" strokeWidth={1.5} />
               </div>
 
@@ -64,7 +64,7 @@ export default function CoreServices() {
                 <h3 className="text-lg font-bold text-[#1a2e44] mb-2">
                   {title}
                 </h3>
-                <p className="text-gray-500 text-sm leading-relaxed">
+                <p className="text-[#41484B] text-sm leading-relaxed">
                   {description}
                 </p>
               </div>

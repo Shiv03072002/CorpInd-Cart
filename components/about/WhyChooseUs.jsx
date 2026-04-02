@@ -30,21 +30,23 @@ const features = [
 
 export default function WhyChooseUs() {
   return (
-    <section className="w-full bg-white py-20 px-6 md:px-16 lg:px-20">
+    <section className="w-full bg-white py-20 px-6 md:px-16 lg:px-20 relative  ">
+     
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+        
         {/* Left: Image with badge */}
         <div className="relative w-full">
-          <div className="rounded-2xl overflow-hidden w-full aspect-[4/3] relative">
-            <Image
-              src="/team.jpg"
+          <div className="rounded-2xl overflow-hidden w-full h-[600px] relative">
+            <img
+              src="https://plus.unsplash.com/premium_photo-1682089164549-e6448335d95b?q=80&w=2070&auto=format&fit=crop"
               alt="Our Expert Team"
-              fill
-              className="object-cover"
-              priority
+              className="w-full h-full object-cover"
             />
           </div>
+
           {/* Badge */}
-          <div className="absolute bottom-6 right-6 bg-[#1a2e44] text-white rounded-xl px-6 py-4 shadow-xl text-center">
+          <div className="absolute -bottom-10 -right-6 bg-[#1a2e44] border-6 border-white text-white rounded-xl px-6 py-4 shadow-xl text-center">
             <p className="text-4xl font-extrabold leading-none">15+</p>
             <p className="text-xs font-semibold tracking-widest uppercase mt-1 text-gray-300">
               Legal Experts
@@ -56,13 +58,13 @@ export default function WhyChooseUs() {
         <div className="flex flex-col gap-8">
           {/* Tag */}
           <div className="inline-flex">
-            <span className="bg-amber-100 text-amber-700 text-xs font-semibold tracking-widest uppercase px-4 py-2 rounded-full">
+            <span className="bg-[#8355001A] text-[#835500] text-xs font-semibold tracking-widest uppercase px-4 py-2 rounded-full">
               Why Choose Us
             </span>
           </div>
 
           {/* Heading */}
-          <h2 className="text-4xl md:text-5xl font-extrabold text-[#1a2e44] leading-tight">
+          <h2 className="text-4xl md:text-5xl font-extrabold text-[#00242E] leading-tight">
             We Make Legal &amp; Business Work Easy for You
           </h2>
 
@@ -71,7 +73,7 @@ export default function WhyChooseUs() {
             {features.map(({ icon: Icon, title, description }) => (
               <div key={title} className="flex items-start gap-5">
                 {/* Icon Box */}
-                <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-amber-500 flex items-center justify-center shadow-md">
+                <div className="flex-shrink-0 w-12 h-12 rounded-md bg-[#F0A500] flex items-center justify-center ">
                   <Icon className="w-5 h-5 text-white" strokeWidth={2} />
                 </div>
                 {/* Text */}
@@ -88,6 +90,9 @@ export default function WhyChooseUs() {
           </div>
         </div>
       </div>
+
+      <div className="absolute -bottom-36 right-0 translate-x-1/2 w-72 h-72 rounded-full bg-[#197e9a0f] pointer-events-none z-0" />
+
     </section>
   );
 }
