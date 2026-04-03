@@ -430,38 +430,7 @@ export default function TestimonialsAndCTA() {
         </div>
       </section>
 
-      {/* ── CTA Banner ── */}
-      <section ref={ctaSectionRef} className="px-6 md:px-16 lg:px-24 pb-20">
-        <div className="max-w-7xl mx-auto">
-          <div className="relative rounded-3xl overflow-hidden bg-[#0d2b2b] px-10 md:px-16 py-14 flex flex-col md:flex-row items-center justify-between gap-8">
-            {/* Background radial gradient */}
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_80%_50%,rgba(255,255,255,0.03)_0%,transparent_70%)] pointer-events-none" />
-
-            {/* Text */}
-            <div ref={ctaContentRef} className="relative z-10 max-w-[520px]">
-              <h2 className="cta-heading text-3xl md:text-4xl font-black text-white leading-tight mb-4">
-                Ready to Start or Grow<br />Your Business?
-              </h2>
-              <p className="cta-text text-base text-[#8ab0b0] leading-relaxed">
-                Contact our New Delhi office today for a free consultation with our senior partners.
-              </p>
-            </div>
-
-            {/* CTA */}
-            <div className="relative z-10 flex flex-col items-center gap-3 flex-shrink-0">
-              <button
-                ref={ctaButtonRef}
-                className="bg-[#c49a20] hover:bg-[#d4aa30] text-white font-bold px-10 py-4 rounded-xl text-base tracking-wide transition-colors cursor-pointer"
-              >
-                Get a Free Quote
-              </button>
-              <p className="text-xs text-[#7aafaf] tracking-wide uppercase text-center">
-                OR CALL  +91 8595840841
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+     
     </div>
   );
 }

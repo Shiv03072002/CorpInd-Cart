@@ -9,7 +9,7 @@ export default function TrustStats() {
   return (
     <section className="w-full bg-[#F2F6F7] py-24 px-6 md:px-16 lg:px-24 relative ">
       {/* Decorative circle bottom-left */}
-      <div className="absolute -bottom-30 -left-28 w-64 h-64 rounded-full bg-[#0C3B480F] opacity-60 pointer-events-none z-9999" />
+      <div className=" hidden md:block absolute -bottom-30 -left-28 w-64 h-64 rounded-full bg-[#0C3B480F] opacity-60 pointer-events-none z-9999" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">

@@ -1,10 +1,12 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 
 export default function Header() {
+  const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -18,7 +20,7 @@ export default function Header() {
   }, []);
 
   const navLinks = [
-    { href: "/", label: "Home", active: true },
+    { href: "/", label: "Home" },
     { href: "/services", label: "Services" },
     { href: "/laws", label: "Laws & Acts" },
     { href: "/buy-sell", label: "Buy/Sell Company" },
@@ -26,8 +28,16 @@ export default function Header() {
     { href: "/about", label: "About" },
   ];
 
+  // Function to check if link is active
+  const isActive = (href) => {
+    if (href === "/") {
+      return pathname === "/";
+    }
+    return pathname === href || pathname?.startsWith(`${href}/`);
+  };
+
   return (
-    <header className="w-full bg-[#053a49] text-white  sticky top-0 z-50">
+    <header className="w-full bg-[#053a49] text-white sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 md:px-2 py-4 flex items-center justify-between">
         {/* Logo - Fixed width container */}
         <div className="flex items-center w-[120px] md:w-[150px]">
@@ -45,7 +55,7 @@ export default function Header() {
               key={link.href}
               href={link.href}
               className={
-                link.active
+                isActive(link.href)
                   ? "text-[#f0c840] border-b-2 border-[#f0c840] pb-1"
                   : "hover:text-[#f0c840] transition-colors"
               }
@@ -59,7 +69,11 @@ export default function Header() {
         <div className="hidden md:flex items-center gap-4 lg:gap-6 w-[120px] md:w-[150px] justify-end">
           <Link
             href="/contact"
-            className="text-white font-medium hover:text-[#f0c840] transition-colors whitespace-nowrap"
+            className={`font-medium transition-colors whitespace-nowrap ${
+              isActive("/contact")
+                ? "text-[#f0c840] border-b-2 border-[#f0c840] pb-1"
+                : "text-white hover:text-[#f0c840]"
+            }`}
           >
             Contact
           </Link>
@@ -89,7 +103,7 @@ export default function Header() {
                 href={link.href}
                 onClick={() => setIsMenuOpen(false)}
                 className={
-                  link.active
+                  isActive(link.href)
                     ? "text-[#B8791B] font-medium py-2 border-l-4 border-[#B8791B] pl-3"
                     : "text-gray-700 hover:text-[#B8791B] py-2 pl-3 transition-colors"
                 }
@@ -102,7 +116,11 @@ export default function Header() {
             <Link
               href="/contact"
               onClick={() => setIsMenuOpen(false)}
-              className="text-gray-700 font-medium py-2 pl-3 hover:text-[#B8791B] transition-colors"
+              className={
+                isActive("/contact")
+                  ? "text-[#B8791B] font-medium py-2 border-l-4 border-[#B8791B] pl-3"
+                  : "text-gray-700 hover:text-[#B8791B] py-2 pl-3 transition-colors"
+              }
             >
               Contact
             </Link>

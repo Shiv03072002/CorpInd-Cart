@@ -91,7 +91,7 @@ export default function WhyChooseUs() {
         </div>
       </div>
 
-      <div className="absolute -bottom-36 right-0 translate-x-1/2 w-72 h-72 rounded-full bg-[#197e9a0f] pointer-events-none z-0" />
+      <div className=" hidden md:block absolute -bottom-36 right-0 translate-x-1/2 w-72 h-72 rounded-full bg-[#197e9a0f] pointer-events-none z-0" />
 
     </section>
   );

@@ -6,6 +6,7 @@ import WhyChooseUs from '@/components/home/Whychooseus'
 import HowItWorks from '@/components/home/Howitworks'
 import LatestArticles from '@/components/home/Latestarticles'
 import Testimonials from '@/components/home/Testimonials'
+import CTA from '@/components/common/CTA'
 export default function Home() {
   return (
    <div>
@@ -16,6 +17,7 @@ export default function Home() {
      <HowItWorks/>
      <LatestArticles/>
      <Testimonials/>
+      <CTA/>
    </div>
   );
 }
